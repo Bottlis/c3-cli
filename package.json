@@ -1,0 +1,55 @@
+{
+  "name": "c3-cli",
+  "version": "1.0.0",
+  "description": "The Construct 3 Command Line Interface (CLI) is a unified tool to manage your C3 dev environment.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "gen-package-json": "babel-node ./gen-package.json.js",
+    "test": "jest",
+    "dev": "babel-node -- ./src/index.js",
+    "pre-build": "npm run clean && rimraf ./src/package.json && babel-node ./gen-package.json.js",
+    "build": "npm run pre-build && cross-env NODE_ENV=production babel src -d lib --copy-files --ignore __tests__ "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diptox-c3/c3-cli.git"
+  },
+  "keywords": [
+    "c3",
+    "construct",
+    "construct",
+    "3",
+    "scirra",
+    "diptox",
+    "hmmg",
+    "c3-cli",
+    "cli",
+    "c3",
+    "cli"
+  ],
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "commander": "^2.15.1",
+    "express": "^4.16.3",
+    "fs-extra": "^6.0.1",
+    "home-path": "^1.0.6",
+    "https": "^1.0.0",
+    "path": "^0.12.7",
+    "read-pkg": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.1.6",
+    "nodemon": "^1.17.5",
+    "rimraf": "^2.6.2"
+  },
+  "author": "DipToX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diptox-c3/c3-cli/issues"
+  },
+  "homepage": "https://github.com/diptox-c3/c3-cli#readme"
+}
