@@ -29,14 +29,16 @@
     "cli"
   ],
   "dependencies": {
+    "camelcase": "^5.0.0",
+    "caporal": "^0.10.0",
     "child_process": "^1.0.2",
-    "commander": "^2.15.1",
     "express": "^4.16.3",
     "fs-extra": "^6.0.1",
     "home-path": "^1.0.6",
     "https": "^1.0.0",
     "path": "^0.12.7",
-    "read-pkg": "^3.0.0"
+    "read-pkg": "^3.0.0",
+    "replace-in-file": "^3.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,53 +1,51 @@
-# c3-dev-webserver
-This is an NPM package that allow C3 developers to run the dev server easly
+# c3-cli
+The Construct 3 Command Line Interface (CLI) is a unified tool to manage your C3 dev environment.
 
 ## Prerequisites
-* OpenSSL (needed to generate the SSL certificate)
 * Nodejs 6.1 or newer (8.1 is recommended)
 ## Installation
 
 ```bash
-npm install -g c3-dev-webserver
+npm install -g c3-cli
 ```
 
 ## Usage
 
 ```bash
-c3-webserver [options] <dir>
+c3 1.0.0
 
-  Options:
+USAGE
+  c3 create <type> <id> <dir>
 
-    -v, --version             output the version number
-    -p, --port <port>         Set the HTTPwebserver Port, Default=8080
-    -s, --https-port <hport>  Set the HTTPS webserver Port, Default=4430
-    -c, --certs <certs>       Set where to save the SSL certs, Default="~/.diptox/c3-dev-webserver/"
-    -h, --help                output usage information
+ARGUMENTS
+  <type>      Addon type must be plugin|behavior|effect|theme                  required
+  <id>        Addon id, Will be replaced automatically in the addon files      required
+  <dir>       The directory where to create the Addon                          required
+
+OPTIONS
+  --plugin-type <plugintype>      Select a plugin type single-global|drawing|editor-text, type plugin ONLY!!      optional      default: "single-global"
+
+GLOBAL OPTIONS
+  -h, --help         Display help
+  -V, --version      Display version
+  --no-color         Disable colors
+  --quiet            Quiet mode - only displays warn and error messages
+  -v, --verbose      Verbose mode - will also output debug messages
 ```
 
-```<dir>``` is the directory that contains your addons
-
-#### Example
+## Example
 
 ```bash
-~  
-├── ...  
-├── diptox  
-│   ├── addons          # <==== The path of this directory must be set as ```<dir>```  
-│      ├── behaviors  
-│      ├── effects  
-│      ├── plugins  
-│         ├── TransitionLayout  
-└── ...  
+# Create an Editor-Text plugin with the id "thisIsMyPluginID" inside the directory "~/myPlugins/"
+c3 create plugin thisIsMyPluginID ~/myPlugins/ --plugin-type="editor-text"
+
+# Create a behavior addon with the id "thisIsABehavior" inside the directory "~/myBehavior/"
+c3 create behavior thisIsABehavior ~/myBehavior/
+
+# Create an effect addon with the id "thisIsAnEffect" inside the directory "~/myEffects/"
+c3 create effect thisIsAnEffect ~/myEffects/
+
+# Create a theme addon with the id "thisIsMyTheme" inside the directory "~/myThemes/"
+c3 create theme thisIsMyTheme ~/myThemes/
 ```
 
-I am going to develop a new plugin called ```TransitionLayout```  
-```~/diptox/addons/plugins``` is the parent directory of ```TransitionLayout```
-
-My command will be
-```bash
-c3-webserver -p 8000 ~/diptox/addons/
-```
-then in C3 the Url of your plugin addon.json will be
-```
-http://localhost:8000/plugins/TransitionLayout/addon.json
-```
