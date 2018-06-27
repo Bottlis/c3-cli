@@ -3,6 +3,8 @@ import fs from 'fs-extra';
 import camelCase from 'camelcase';
 import replace from 'replace-in-file';
 
+import logger from './logger';
+
 const templateDirPath = path.join(__dirname, 'template');
 
 const types = {
@@ -49,7 +51,7 @@ export default (prog) => {
     .argument('<dir>', 'The directory where to create the Addon')
     .option('--plugin-type <plugintype>', 'Select a plugin type single-global|drawing|editor-text, type plugin ONLY!!', /^single-global|drawing|editor-text$/, 'single-global')
 
-    .action((args, options, logger) => {
+    .action((args, options) => {
 
       let tmpPath = null;
 
@@ -145,9 +147,9 @@ const replaceTheAddonIdAndClassName = (id, addonPath) => {
   replace(optionsMyCompany).then((changes) => {
     return replace(optionsMyCustom)
   }).then(changes => {
-    console.log(`Your new addon is located here "${addonPath}"`);
+    logger.info(`Your new addon is located here "${addonPath}"`);
   }).catch(error => {
-    console.error('Error occurred:', error);
+    logger.error('Error occurred:', error);
   });
 }
 
