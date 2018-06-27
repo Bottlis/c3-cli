@@ -33,7 +33,7 @@ GLOBAL OPTIONS
   -v, --verbose      Verbose mode - will also output debug messages
 ```
 
-### create <type> <id> <dir>
+## create \<type> \<id> \<dir>
 ```bash
 USAGE
   c3 create <type> <id> <dir>
@@ -62,7 +62,7 @@ c3 create theme thisIsMyTheme ~/myThemes/
 
 ```
 
-### dev-server [dir]
+## dev-server [dir]
 ```bash
 USAGE
   c3 dev-server [dir]
